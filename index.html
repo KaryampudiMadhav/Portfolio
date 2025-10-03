@@ -1,180 +1,359 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madhav Karyampudi - Profile Card</title>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Madhav Karyampudi - Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
-        :root {
-            --card-bg: #ffffff;
-            --text-color: #333;
-            --secondary-text-color: #666;
-            --button-bg: #28a745;
-            --button-text: #fff;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            --icon-color: #dc3545;
-        }
-
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e2e8f0;
         }
-
-        .profile-card {
-            background-color: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 10px 25px var(--shadow-color);
-            padding: 40px 30px;
-            text-align: center;
-            max-width: 350px;
+        .glass-effect {
+            background: rgba(23, 23, 23, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #38bdf8;
+            transition: width .3s;
+        }
+        .nav-link:hover::after {
             width: 100%;
-            transition: all 0.3s ease;
         }
-
-        .profile-card img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid #fff;
-            box-shadow: 0 5px 15px var(--shadow-color);
-            margin-top: -100px;
-            object-fit: cover;
+        .nav-link.active {
+            color: #38bdf8;
         }
-
-        .profile-card h2 {
-            margin: 20px 0 5px;
-            color: var(--text-color);
-            font-weight: 600;
-            font-size: 1.8em;
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.2), 0 4px 6px -2px rgba(56, 189, 248, 0.1);
         }
-
-        .profile-card .title {
-            color: var(--secondary-text-color);
-            font-size: 1em;
-            margin-bottom: 10px;
-        }
-
-        .profile-card .email {
-            color: var(--secondary-text-color);
-            font-size: 0.9em;
-            margin-bottom: 25px;
-        }
-
-        .show-more-btn {
-            background-color: var(--button-bg);
-            color: var(--button-text);
-            border: none;
-            border-radius: 25px;
-            padding: 12px 30px;
-            font-size: 1em;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .show-more-btn:hover {
-            background-color: #218838;
-            transform: translateY(-2px);
-        }
-
-        .more-info {
-            margin-top: 25px;
-            text-align: left;
-            display: none; /* Initially hidden */
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            font-size: 0.95em;
-            color: var(--text-color);
-        }
-
-        .info-item i {
-            color: var(--icon-color);
-            font-size: 1.2em;
-            margin-right: 15px;
-            width: 20px;
-            text-align: center;
-        }
-        
-        /* Animation for the extra info appearing */
-        .more-info.show {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <div class="profile-card">
-        <img src="https://placehold.co/150x150/2c6e49/FFFFFF?text=MK" alt="Madhav Karyampudi">
-        <h2>Madhav Karyampudi</h2>
-        <p class="title">Full Stack Developer & AI/ML Enthusiast</p>
-        <p class="email">karyampudimadhav@gmail.com</p>
-        
-        <button id="toggleBtn" class="show-more-btn">Show More</button>
-
-        <div id="moreInfo" class="more-info">
-            <div class="info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Bhimavaram, Andhra Pradesh</span>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-briefcase"></i>
-                <span>Skills: React, Node.js, Python, ML</span>
-            </div>
-             <div class="info-item">
-                <i class="fab fa-github"></i>
-                <span>github.com/KaryampudiMadhav</span>
-            </div>
+    <!-- Header -->
+    <header id="header" class="glass-effect fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gradient-text">Madhav Karyampudi</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link text-slate-300 hover:text-sky-400 transition-colors duration-300">About</a>
+                <a href="#skills" class="nav-link text-slate-300 hover:text-sky-400 transition-colors duration-300">Skills</a>
+                <a href="#experience" class="nav-link text-slate-300 hover:text-sky-400 transition-colors duration-300">Experience</a>
+                <a href="#projects" class="nav-link text-slate-300 hover:text-sky-400 transition-colors duration-300">Projects</a>
+                <a href="#education" class="nav-link text-slate-300 hover:text-sky-400 transition-colors duration-300">Education</a>
+                <a href="#contact" class="nav-link text-slate-300 hover:text-sky-400 transition-colors duration-300">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
         </div>
-    </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-6 text-slate-300 hover:bg-slate-800">About</a>
+            <a href="#skills" class="block py-2 px-6 text-slate-300 hover:bg-slate-800">Skills</a>
+            <a href="#experience" class="block py-2 px-6 text-slate-300 hover:bg-slate-800">Experience</a>
+            <a href="#projects" class="block py-2 px-6 text-slate-300 hover:bg-slate-800">Projects</a>
+            <a href="#education" class="block py-2 px-6 text-slate-300 hover:bg-slate-800">Education</a>
+            <a href="#contact" class="block py-2 px-6 text-slate-300 hover:bg-slate-800">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-24">
+
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[calc(100vh-6rem)] flex items-center">
+            <div class="w-full">
+                <h1 class="text-4xl md:text-6xl font-bold">Madhav Karyampudi</h1>
+                <h2 class="text-3xl md:text-5xl font-semibold mt-2 gradient-text">Full Stack Developer</h2>
+                <p class="mt-6 max-w-3xl text-slate-400 text-lg">
+                    Expertise in MERN, Next.js, and TypeScript, building scalable, responsive, and accessible web applications. Passionate about delivering high-quality user experiences and leveraging AI to accelerate development.
+                </p>
+                <div class="mt-8 flex space-x-6">
+                    <a href="https://github.com/your-github-username" target="_blank" class="text-slate-400 hover:text-sky-400 transition-colors duration-300" aria-label="GitHub">
+                        <i data-lucide="github" class="w-8 h-8"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/your-linkedin-profile" target="_blank" class="text-slate-400 hover:text-sky-400 transition-colors duration-300" aria-label="LinkedIn">
+                        <i data-lucide="linkedin" class="w-8 h-8"></i>
+                    </a>
+                    <a href="mailto:karyampudimadhav@gmail.com" class="text-slate-400 hover:text-sky-400 transition-colors duration-300" aria-label="Email">
+                        <i data-lucide="mail" class="w-8 h-8"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <h3 class="text-3xl font-bold gradient-text mb-8">About Me</h3>
+            <div class="bg-slate-900/50 rounded-lg p-8 border border-slate-800">
+                <p class="text-slate-400 leading-relaxed">
+                    Full Stack Developer with expertise in MERN, Next.js, and TypeScript, building scalable, responsive, and accessible web applications. Experienced in modern UI frameworks (Tailwind, ShadCN, Material UI) and state management (Zustand, Context API). Skilled in API integration, performance optimization, and delivering high-quality user experiences. AI-native developer leveraging GitHub Copilot and AI-assisted debugging to accelerate development and improve code quality.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20">
+            <h3 class="text-3xl font-bold gradient-text mb-12 text-center">Technical Skills</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Frontend -->
+                <div class="skill-card bg-slate-900/50 rounded-lg p-6 border border-slate-800 transition-all duration-300">
+                    <h4 class="text-xl font-semibold text-sky-400 mb-4">Frontend</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">React.js</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Next.js</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">TypeScript</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">ShadCN UI</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">DaisyUI</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Material UI</span>
+                    </div>
+                </div>
+                <!-- State Management -->
+                <div class="skill-card bg-slate-900/50 rounded-lg p-6 border border-slate-800 transition-all duration-300">
+                    <h4 class="text-xl font-semibold text-sky-400 mb-4">State Management</h4>
+                    <div class="flex flex-wrap gap-2">
+                         <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Zustand</span>
+                         <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Context API</span>
+                    </div>
+                </div>
+                <!-- Backend -->
+                <div class="skill-card bg-slate-900/50 rounded-lg p-6 border border-slate-800 transition-all duration-300">
+                    <h4 class="text-xl font-semibold text-sky-400 mb-4">Backend</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Node.js</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Express.js</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">REST APIs</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">JWT</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Socket.IO</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Flask</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Clerk</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Convex</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Cloudinary</span>
+                    </div>
+                </div>
+                <!-- Databases -->
+                <div class="skill-card bg-slate-900/50 rounded-lg p-6 border border-slate-800 transition-all duration-300">
+                    <h4 class="text-xl font-semibold text-sky-400 mb-4">Databases</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">PostgreSQL</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">MySQL</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">MongoDB</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Prisma</span>
+                    </div>
+                </div>
+                 <!-- Tools -->
+                <div class="skill-card bg-slate-900/50 rounded-lg p-6 border border-slate-800 transition-all duration-300">
+                    <h4 class="text-xl font-semibold text-sky-400 mb-4">Tools</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Git/GitHub</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Postman</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Render</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Vercel</span>
+                    </div>
+                </div>
+                 <!-- Additional -->
+                <div class="skill-card bg-slate-900/50 rounded-lg p-6 border border-slate-800 transition-all duration-300">
+                    <h4 class="text-xl font-semibold text-sky-400 mb-4">Additional</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Python</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Pandas</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">NumPy</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">scikit-learn</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Java</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">C</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20">
+            <h3 class="text-3xl font-bold gradient-text mb-8">Experience</h3>
+            <div class="bg-slate-900/50 rounded-lg p-8 border border-slate-800 relative">
+                <div class="absolute top-8 left-[-1.25rem] h-full border-l-2 border-sky-400">
+                    <div class="w-5 h-5 rounded-full bg-sky-400 absolute left-[-0.68rem] top-[-1px]"></div>
+                </div>
+                <div class="ml-8">
+                    <p class="text-slate-400 text-sm">Apr-Jun 2025</p>
+                    <h4 class="text-xl font-semibold mt-1">Full Stack Intern</h4>
+                    <p class="text-md text-slate-300">Eduskills-AICTE</p>
+                    <ul class="mt-4 list-disc list-inside text-slate-400 space-y-2">
+                        <li>Learned building responsive UIs with React.js, Next.js, and Tailwind CSS.</li>
+                        <li>Practiced implementing JWT authentication and integrating REST APIs.</li>
+                        <li>Collaborated with Git/GitHub for version control and peer reviews.</li>
+                        <li>Optimized frontend for accessibility, performance, and stability, reducing load times and improving UI responsiveness.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <h3 class="text-3xl font-bold gradient-text mb-12 text-center">Projects</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="skill-card bg-slate-900/50 rounded-lg p-6 border border-slate-800 flex flex-col transition-all duration-300">
+                    <h4 class="text-xl font-semibold text-sky-400 mb-3">Real-Time Messaging App</h4>
+                    <p class="text-slate-400 flex-grow">Developed a real-time chat application using React.js, Tailwind CSS, and DaisyUI. Implemented Socket.IO for live messaging, JWT-based authentication, and Cloudinary for media uploads.</p>
+                    <div class="mt-6 flex space-x-4">
+                        <a href="#" target="https://github.com/KaryampudiMadhav/mern-chat-app" class="text-slate-300 hover:text-sky-400 transition-colors duration-300 flex items-center"><i data-lucide="github" class="w-5 h-5 mr-2"></i>GitHub</a>
+                        <a href=" https://mern-chat-app-mf99.onrender.com" target="_blank" class="text-slate-300 hover:text-sky-400 transition-colors duration-300 flex items-center"><i data-lucide="external-link" class="w-5 h-5 mr-2"></i>Live Demo</a>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="skill-card bg-slate-900/50 rounded-lg p-6 border border-slate-800 flex flex-col transition-all duration-300">
+                    <h4 class="text-xl font-semibold text-sky-400 mb-3">AI-Powered StudyHub</h4>
+                    <p class="text-slate-400 flex-grow">Built an AI-driven skill recommender platform using MERN stack and Gemini 1.5 Pro. Designed interactive modules with quizzes, progress tracking, and Zustand for state management.</p>
+                     <div class="mt-6 flex space-x-4">
+                        <a href="https://github.com/KaryampudiMadhav/StudyHub-Agent" target="_blank" class="text-slate-300 hover:text-sky-400 transition-colors duration-300 flex items-center"><i data-lucide="github" class="w-5 h-5 mr-2"></i>GitHub</a>
+                        <a href="https://github.com/KaryampudiMadhav/StudyHub-Agent" target="_blank" class="text-slate-300 hover:text-sky-400 transition-colors duration-300 flex items-center"><i data-lucide="external-link" class="w-5 h-5 mr-2"></i>Live Demo</a>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="skill-card bg-slate-900/50 rounded-lg p-6 border border-slate-800 flex flex-col transition-all duration-300">
+                    <h4 class="text-xl font-semibold text-sky-400 mb-3">Social Media Application</h4>
+                    <p class="text-slate-400 flex-grow">Developed a full-stack social platform with Next.js, TypeScript, and PostgreSQL. Implemented Clerk authentication, dynamic routing, file uploads, and optimistic UI updates.</p>
+                     <div class="mt-6 flex space-x-4">
+                        <a href="https://github.com/KaryampudiMadhav/SocialMediaApplicationNEXT.JS" target="_blank" class="text-slate-300 hover:text-sky-400 transition-colors duration-300 flex items-center"><i data-lucide="github" class="w-5 h-5 mr-2"></i>GitHub</a>
+                        <a href="https://github.com/KaryampudiMadhav/SocialMediaApplicationNEXT.JS" target="_blank" class="text-slate-300 hover:text-sky-400 transition-colors duration-300 flex items-center"><i data-lucide="external-link" class="w-5 h-5 mr-2"></i>Live Demo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education" class="py-20">
+             <h3 class="text-3xl font-bold gradient-text mb-8">Education</h3>
+             <div class="space-y-8">
+                <div class="bg-slate-900/50 rounded-lg p-6 border border-slate-800">
+                    <p class="text-slate-400">2023 - Present</p>
+                    <h4 class="text-xl font-semibold mt-1">B.Tech in AI & ML</h4>
+                    <p class="text-md text-slate-300">SRKR Engineering College</p>
+                    <p class="text-sm text-slate-400 mt-1">CGPA: 8.38</p>
+                </div>
+                 <div class="bg-slate-900/50 rounded-lg p-6 border border-slate-800">
+                    <p class="text-slate-400">2021-2023</p>
+                    <h4 class="text-xl font-semibold mt-1">Intermediate (MPC)</h4>
+                    <p class="text-md text-slate-300">Sri Chaitanya Jr. College</p>
+                    <p class="text-sm text-slate-400 mt-1">CGPA: 9.77</p>
+                </div>
+             </div>
+        </section>
+
+        <!-- Certifications & Achievements -->
+        <section id="certs-achievements" class="py-20">
+            <h3 class="text-3xl font-bold gradient-text mb-12 text-center">Certifications & Achievements</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h4 class="text-2xl font-semibold text-sky-400 mb-6 text-center">Certifications</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><i data-lucide="award" class="w-5 h-5 text-sky-400 mr-3 mt-1 flex-shrink-0"></i> <span>Postman API Fundamentals Student Expert</span></li>
+                        <li class="flex items-start"><i data-lucide="award" class="w-5 h-5 text-sky-400 mr-3 mt-1 flex-shrink-0"></i> <span>Python Programming - Cisco/LinkedIn Learning</span></li>
+                        <li class="flex items-start"><i data-lucide="award" class="w-5 h-5 text-sky-400 mr-3 mt-1 flex-shrink-0"></i> <span>Machine Learning with Python - IBM Cognitive Class</span></li>
+                        <li class="flex items-start"><i data-lucide="award" class="w-5 h-5 text-sky-400 mr-3 mt-1 flex-shrink-0"></i> <span>C Programming - Cisco</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-2xl font-semibold text-sky-400 mb-6 text-center">Achievements</h4>
+                     <ul class="space-y-4">
+                        <li class="flex items-start"><i data-lucide="star" class="w-5 h-5 text-sky-400 mr-3 mt-1 flex-shrink-0"></i> <span>HackerRank 5-Star (Python)</span></li>
+                        <li class="flex items-start"><i data-lucide="trophy" class="w-5 h-5 text-sky-400 mr-3 mt-1 flex-shrink-0"></i> <span>Hackoverflow Finalist (Top 10 Teams, Fullstack + AI project)</span></li>
+                        <li class="flex items-start"><i data-lucide="code" class="w-5 h-5 text-sky-400 mr-3 mt-1 flex-shrink-0"></i> <span>Contributor for GirlScript Summer of Code 2025</span></li>
+                         <li class="flex items-start"><i data-lucide="keyboard" class="w-5 h-5 text-sky-400 mr-3 mt-1 flex-shrink-0"></i> <span>Regular problem solving on LeetCode</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 text-center">
+            <h3 class="text-3xl font-bold gradient-text mb-4">Get In Touch</h3>
+            <p class="text-slate-400 max-w-xl mx-auto mb-8">
+                I'm currently open to new opportunities. Feel free to reach out if you have a project in mind or just want to connect.
+            </p>
+            <div class="mt-8">
+                <a href="mailto:karyampudimadhav@gmail.com" class="text-2xl gradient-text font-semibold hover:brightness-125 transition-all duration-300">
+                    karyampudimadhav@gmail.com
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-slate-800">
+        <div class="container mx-auto px-6 py-6 text-center text-slate-500">
+            <p>&copy; 2025 Madhav Karyampudi. All Rights Reserved.</p>
+        </div>
+    </footer>
 
     <script>
-        // Get the button and the extra info div from the DOM
-        const toggleBtn = document.getElementById('toggleBtn');
-        const moreInfo = document.getElementById('moreInfo');
+        // Initialize lucide icons
+        lucide.createIcons();
 
-        // Add a click event listener to the button
-        toggleBtn.addEventListener('click', () => {
-            // Check if the extra info is currently shown
-            const isShown = moreInfo.style.display === 'block';
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
 
-            if (isShown) {
-                // If it's shown, hide it and change button text
-                moreInfo.style.display = 'none';
-                moreInfo.classList.remove('show');
-                toggleBtn.textContent = 'Show More';
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
             } else {
-                // If it's hidden, show it and change button text
-                moreInfo.style.display = 'block';
-                moreInfo.classList.add('show');
-                toggleBtn.textContent = 'Show Less';
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
             }
         });
-    </script>
 
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
+
